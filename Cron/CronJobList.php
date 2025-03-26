@@ -69,7 +69,7 @@ final class CronJobList
             if ($cronJob instanceof DisableableCronJobInterface && !$cronJob->isEnabled()) {
                 return false;
             }
-            $cronExpression = CronExpression::factory($cronJob->getCronExpression());
+            $cronExpression = new CronExpression($cronJob->getCronExpression());
             $now = $this->clock->now();
 
             return $cronExpression->isDue($now->format('c'), $now->getTimezone()->getName());
@@ -85,7 +85,7 @@ final class CronJobList
             if (!$commandData['enabled']) {
                 return false;
             }
-            $cronExpression = CronExpression::factory($commandData['expression']);
+            $cronExpression = new CronExpression($commandData['expression']);
             $now = $this->clock->now();
 
             return $cronExpression->isDue($now->format('c'), $now->getTimezone()->getName());

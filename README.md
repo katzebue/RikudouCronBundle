@@ -1,6 +1,6 @@
 ## How to install
 
-Via composer: `composer require rikudou/cron-bundle`.
+Via composer: `composer require katzebue/cron-bundle`.
 
 The bundle should be enabled automatically if you use the Symfony Flex.
 

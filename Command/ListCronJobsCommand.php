@@ -8,7 +8,6 @@ use InvalidArgumentException;
 use Rikudou\CronBundle\Cron\CronJobList;
 use Rikudou\CronBundle\Cron\DisableableCronJobInterface;
 use Rikudou\CronBundle\Cron\NamedCronJobInterface;
-use Rikudou\CronBundle\Traits\OptionalLoggerTrait;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
@@ -71,7 +70,7 @@ final class ListCronJobsCommand extends Command
             }
             $isEnabled = $isEnabled ? 'Yes' : 'No';
             try {
-                $cronExpression = CronExpression::factory($cronJob->getCronExpression());
+                $cronExpression = new CronExpression($cronJob->getCronExpression());
 
                 $table->addRow([
                     $name,
@@ -100,7 +99,7 @@ final class ListCronJobsCommand extends Command
             $isEnabled = $cronCommand['enabled'] ? 'Yes' : 'No';
 
             try {
-                $cronExpression = CronExpression::factory($cronCommand['expression']);
+                $cronExpression = new CronExpression($cronCommand['expression']);
 
                 $table->addRow([
                     $name,
