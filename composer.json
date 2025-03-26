@@ -1,5 +1,5 @@
 {
-  "name": "rikudou/cron-bundle",
+  "name": "katzebue/cron-bundle",
   "type": "symfony-bundle",
   "description": "Simple and effective cron implementation for Symfony 4+",
   "license": "MIT",
